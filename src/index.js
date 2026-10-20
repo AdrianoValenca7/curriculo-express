@@ -1,6 +1,8 @@
 import "dotenv/config";
 import express from "express";
 import helmet from "helmet";
+import { sequelize } from "./models/index.js";
+import * as routes from "./routes/index.js";
 
 import {
   corsMiddleware,
@@ -26,6 +28,7 @@ app.use(contextMiddleware);
 app.get("/", (req, res) => {
   return res.send("Servidor Curriculo Express executando...");
 });
+app.use("/pessoas", routes.pessoa);
 
 // rota não encontrada (404)
 app.use(notFoundMiddleware);
@@ -35,8 +38,25 @@ app.use(errorMiddleware);
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-  console.log(`Servidor executando na porta ${port}!`);
-});
+const startServer = async () => {
+  try {
+    await sequelize.authenticate();
+
+    console.log("Conexão com NeonDB realizada com sucesso!");
+
+    await sequelize.sync();
+
+    console.log("Tabelas sincronizadas com sucesso!");
+
+    app.listen(port, () => {
+      console.log(`Servidor executando na porta ${port}!`);
+    });
+  } catch (error) {
+    console.error("Erro ao iniciar servidor:", error.message);
+    process.exitCode = 1;
+  }
+};
+
+startServer();
 
 export default app;

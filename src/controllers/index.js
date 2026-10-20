@@ -1,0 +1,1 @@
+export { default as pessoaController } from "./pessoaController.js";

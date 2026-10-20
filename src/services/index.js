@@ -1,0 +1,1 @@
+export { default as pessoaService } from "./pessoaService.js";
