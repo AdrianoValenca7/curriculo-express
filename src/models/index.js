@@ -2,6 +2,7 @@ import { Sequelize, DataTypes } from "sequelize";
 import getPessoaModel from "./pessoa.js";
 import getFormacaoModel from "./formacao.js";
 import getExperienciaModel from "./experiencia.js";
+import getProjetoModel from "./projeto.js";
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: "postgres",
@@ -18,6 +19,7 @@ const models = {
   Pessoa: getPessoaModel(sequelize, { DataTypes }),
   Formacao: getFormacaoModel(sequelize, { DataTypes }),
   Experiencia: getExperienciaModel(sequelize, { DataTypes }),
+  Projeto: getProjetoModel(sequelize, { DataTypes }),
 };
 
 Object.values(models).forEach((model) => {

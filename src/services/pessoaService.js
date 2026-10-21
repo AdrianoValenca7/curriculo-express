@@ -9,6 +9,7 @@ const getPessoaById = async (id) => {
     include: [
       models.Formacao,
       models.Experiencia,
+      models.Projeto,
     ],
   });
 };
