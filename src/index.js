@@ -33,6 +33,7 @@ app.use("/pessoas", routes.pessoa);
 app.use("/formacoes", routes.formacao);
 app.use("/experiencias", routes.experiencia);
 app.use("/projetos", routes.projeto);
+app.use("/habilidades", routes.habilidade);
 
 // rota não encontrada (404)
 app.use(notFoundMiddleware);

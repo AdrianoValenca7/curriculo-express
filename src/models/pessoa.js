@@ -46,6 +46,11 @@ const getPessoaModel = (sequelize, { DataTypes }) => {
     foreignKey: "pessoaId",
     onDelete: "CASCADE",
   });
+
+  Pessoa.hasMany(models.Habilidade, {
+    foreignKey: "pessoaId",
+    onDelete: "CASCADE",
+  });
 };
 
   return Pessoa;

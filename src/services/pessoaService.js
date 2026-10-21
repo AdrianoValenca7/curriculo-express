@@ -10,6 +10,7 @@ const getPessoaById = async (id) => {
       models.Formacao,
       models.Experiencia,
       models.Projeto,
+      models.Habilidade,
     ],
   });
 };
