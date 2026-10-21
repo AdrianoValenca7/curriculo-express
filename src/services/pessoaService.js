@@ -5,7 +5,12 @@ const getAllPessoas = async () => {
 };
 
 const getPessoaById = async (id) => {
-  return await models.Pessoa.findByPk(id);
+  return await models.Pessoa.findByPk(id, {
+    include: [
+      models.Formacao,
+      models.Experiencia,
+    ],
+  });
 };
 
 const createPessoa = async ({ nome, email, telefone, resumo }) => {

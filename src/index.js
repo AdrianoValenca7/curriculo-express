@@ -28,7 +28,10 @@ app.use(contextMiddleware);
 app.get("/", (req, res) => {
   return res.send("Servidor Curriculo Express executando...");
 });
+
 app.use("/pessoas", routes.pessoa);
+app.use("/formacoes", routes.formacao);
+app.use("/experiencias", routes.experiencia);
 
 // rota não encontrada (404)
 app.use(notFoundMiddleware);
