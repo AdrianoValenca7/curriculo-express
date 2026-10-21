@@ -1,4 +1,7 @@
+import "dotenv/config";
+import pg from "pg";
 import { Sequelize, DataTypes } from "sequelize";
+
 import getPessoaModel from "./pessoa.js";
 import getFormacaoModel from "./formacao.js";
 import getExperienciaModel from "./experiencia.js";
@@ -7,11 +10,11 @@ import getHabilidadeModel from "./habilidade.js";
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: "postgres",
-  logging: false,
+  dialectModule: pg,
   dialectOptions: {
     ssl: {
       require: true,
-      rejectUnauthorized: true,
+      rejectUnauthorized: false,
     },
   },
 });
